@@ -1,0 +1,12 @@
+<section ng-init=userctrl.checkToken()>
+  <h2 id="car-title">Make: {{carCtrl.curCar.make}}</h2>
+  <h2 id="car-model">Model: {{carCtrl.curCar.model}}</h2>
+
+  <!-- <div id="answer-cont"> -->
+  <div id="next-button" ng-show="carCtrl.showNextButton" ng-click="carCtrl.showNextButton = false; carCtrl.newQuestion()"name="button">next</div>
+  <!-- </div> -->
+  <footer>
+    <a id="home-link" href="#/profile">User Profile</a>
+    <a id="logout" href='' ng-click="userctrl.signOut()">Logout</a>
+  </footer>
+</section>
