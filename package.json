@@ -1,0 +1,49 @@
+{
+  "name": "car-collector",
+  "version": "1.0.0",
+  "description": "Help keep track of cars in your collection!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaulFein/car-collector.git"
+  },
+  "author": "SaulFein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaulFein/car-collector/issues"
+  },
+  "homepage": "https://github.com/SaulFein/car-collector#readme",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^6.2.0",
+    "mongoose": "^4.4.17",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.5",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-karma": "0.0.5",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sass": "^2.3.1",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "node-sass": "^3.7.0",
+    "protractor": "^3.3.0",
+    "webpack-stream": "^3.2.0"
+  }
+}
