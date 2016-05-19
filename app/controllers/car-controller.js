@@ -19,24 +19,24 @@ module.exports = function(app){
     // }
 
     //gets questions based on category/difficulty selected or from previous quiz
-    vm.getQuestions = function(data){
-      vm.carData = data;
-      console.log('data!!!',data)
-
-      $http.get(url + '?category=' + vm.category + '&difficulty=' + vm.difficulty)
-        .then((res) => {
-          vm.allCars = res.data.data;
-          console.log(vm.allCars)
-          vm.carData.totalQuestions = vm.allCars.length;
-          vm.curQuestion = vm.allCars[vm.carData.completedQuestions];
-          vm.answers = vm.curQuestion.choices
-          // if (!vm.carData._id) {
-          //   console.log('CREATING SCORE')
-          //   vm.createScore();
-          // }
-        })
-      $location.path('/inventory')
-    }
+    // vm.getQuestions = function(data){
+    //   vm.carData = data;
+    //   console.log('data!!!',data)
+    //
+    //   $http.get(url + '?category=' + vm.category + '&difficulty=' + vm.difficulty)
+    //     .then((res) => {
+    //       vm.allCars = res.data.data;
+    //       console.log(vm.allCars)
+    //       vm.carData.totalQuestions = vm.allCars.length;
+    //       vm.curQuestion = vm.allCars[vm.carData.completedQuestions];
+    //       vm.answers = vm.curQuestion.choices
+    //       // if (!vm.carData._id) {
+    //       //   console.log('CREATING SCORE')
+    //       //   vm.createScore();
+    //       // }
+    //     })
+    //   $location.path('/inventory')
+    // }
 
 
 
