@@ -1,6 +1,6 @@
 'use stict';
 module.exports = function(app){
-  app.controller('carController',['$http','$window','$location','AuthService', function($http, $window, $location, AuthService){
+  app.controller('CarController',['$http','$window','$location','AuthService', function($http, $window, $location, AuthService){
 
     let url = '/api/car';
     let vm = this;
