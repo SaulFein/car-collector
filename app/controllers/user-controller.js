@@ -1,7 +1,7 @@
 module.exports = function(app) {
   app.controller('UserController',['AuthService', 'ErrorService', '$http', '$location','$window',
   function(AuthService, ErrorService, $http, $location, $window){
-    // let url = 'http://localhost:3000'
+    let url = 'http://localhost:3000'
     const vm = this;
     vm.user = [];
     vm.user = ['user'];
@@ -9,7 +9,7 @@ module.exports = function(app) {
     vm.ip = false; //ip = invalid password
 
     vm.createUser = function(user) {
-      $http.post('/signup', user, {
+      $http.post(url + '/signup', user, {
         headers: {
           token: AuthService.getToken()
         }
@@ -28,7 +28,7 @@ module.exports = function(app) {
 
     vm.signIn = function(user) {
       console.log(user);
-      AuthService.signIn(user, (err, res) => {
+      AuthService.signIn(url, user, (err, res) => {
         if (err) {
           vm.ip = true;
           return console.log('Problem Signing In ', err);
