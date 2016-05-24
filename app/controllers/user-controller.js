@@ -16,10 +16,11 @@ module.exports = function(app) {
       })
       .then(function(res){
         if(res.data.message !== "User Already Exists"){
+          console.log(res.data.message);
           console.log(res);
           vm.user.push(res.data);
           vm.newUser = null;
-          $location.path('/category');
+          $location.path('/inventory');
         } else {
           vm.uae = true;
         }
@@ -28,13 +29,13 @@ module.exports = function(app) {
 
     vm.signIn = function(user) {
       console.log(user);
-      AuthService.signIn(url, user, (err, res) => {
+      AuthService.signIn(user, (err, res) => {
         if (err) {
           vm.ip = true;
           return console.log('Problem Signing In ', err);
         } else {
           vm.error = ErrorService(null);
-          $location.path('/profile');
+          $location.path('/inventory');
         }
       })
     }

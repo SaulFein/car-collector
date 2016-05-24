@@ -18,6 +18,7 @@ module.exports = (mongoose, models) => {
 
   UserSchema.pre('save', function(next) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
+    console.log('password hashed');
     next();
   });
 
@@ -31,6 +32,7 @@ module.exports = (mongoose, models) => {
   };
 
   UserSchema.methods.generateToken = function() {
+    console.log('generating token')
     return jwt.sign({_id: this._id}, process.env.APP_SECRET || 'change this');
   };
 

@@ -2,11 +2,11 @@ module.exports = function(app) {
   app.factory('AuthService', ['$http', '$window',function($http, $window) {
     var token;
     var userId;
-    // var url = 'http://localhost:3000'
+    var url = 'http://localhost:3000'
     var auth = {
       createUser(user, cb) {
         cb || function() {};
-        $http.post('/signup', user)
+        $http.post(url + '/signup', user)
           .then((res) => {
             token = $window.localStorage.token = res.data.token;
             cb(null, res)
@@ -15,6 +15,9 @@ module.exports = function(app) {
           })
       },
       getToken() {
+        console.log('Get Token = ' + token);
+        console.log('Get Token2 = ' + $window.localStorage.token);
+
         return token || $window.localStorage.token;
       },
       getId(){
@@ -29,7 +32,7 @@ module.exports = function(app) {
       signIn(user, cb) {
         console.log('signIn from auth serv ', user)
         cb || function() {};
-        $http.post('/login', {}, {
+        $http.post(url + '/login', {}, {
           headers: {
             authorization: 'Basic ' + btoa(user.username + ':' + user.password)
           }
