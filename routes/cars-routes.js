@@ -15,7 +15,7 @@ module.exports = (router, models) => {
     })
     .post(jwtAuth, (req, res) => {
       let newCar = new Car(req.body);
-      newCar.save((err, question)=>{
+      newCar.save((err, car)=>{
         if(err){
           return res.json({message: err});
         }

@@ -2,7 +2,7 @@
 module.exports = function(app){
   app.controller('CarController',['$http','$window','$location','AuthService', function($http, $window, $location, AuthService){
 
-    let url = '/api/car';
+    let url = 'http://localhost:3000/api/inventory';
     let vm = this;
     vm.allCars = [];
 
@@ -41,9 +41,9 @@ module.exports = function(app){
 
 
     //used to populate db
-    vm.submit = function(q){
-      q.choices = [q.choices[0],q.choices[1],q.choices[2],q.choices[3]];
-      $http.post(url, q, {
+    vm.submit = function(c){
+
+      $http.post(url, c, {
         headers: {
           token: AuthService.getToken()
         }

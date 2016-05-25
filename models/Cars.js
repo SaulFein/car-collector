@@ -2,6 +2,10 @@
 
 module.exports = (mongoose, models) => {
   let CarSchema = mongoose.Schema({
+    userId: {
+     type: mongoose.Schema.Types.ObjectId,
+     ref: 'User'
+   },
     make: {
       type: String,
       required: true

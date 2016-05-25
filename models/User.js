@@ -13,7 +13,8 @@ module.exports = (mongoose, models) => {
     password: {
       type: String,
       required: true
-    }
+    },
+    inventory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Inventory' }]
   });
 
   UserSchema.pre('save', function(next) {

@@ -30,9 +30,9 @@ app.config(['$routeProvider', function(router) {
       // controllerAs: 'carCtrl',
       templateUrl: 'templates/submit.html'
     })
-    .when('/profile', {
+    .when('/inventory', {
       // controller: 'QuestionController',
       // controllerAs: 'questionCtrl',
-      templateUrl: 'templates/profile.html'
+      templateUrl: 'templates/inventory.html'
     })
 }])
