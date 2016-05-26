@@ -1,8 +1,8 @@
 'use stict';
 module.exports = function(app){
-  app.controller('CarController',['$http','$window','$location','AuthService', function($http, $window, $location, AuthService){
+  app.controller('CarController',['$http','$window','$location','AuthService','CarService', function($http, $window, $location, AuthService, CarService){
 
-    let url = 'http://localhost:3000/api/inventory';
+    let url = 'http://localhost:3000/api/users/';
     let vm = this;
     vm.allCars = [];
 
@@ -42,8 +42,8 @@ module.exports = function(app){
 
     //used to populate db
     vm.submit = function(c){
-
-      $http.post(url, c, {
+      console.log('this is ', c);
+      $http.post(url + c.userId + '/inventory',  c, {
         headers: {
           token: AuthService.getToken()
         }

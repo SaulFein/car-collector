@@ -2,10 +2,11 @@
 
 module.exports = (router, models) => {
   let Car = models.Car;
+  let User = models.User;
   let jwtAuth = require(__dirname + '/../lib/jwtAuth.js');
 
-  router.route('/inventory')
-    .get((req, res) => {
+  router.route('/users/:user/inventory')
+    .get(jwtAuth, (req, res) => {
       Car.find((err, cars)=>{
         if(err){
           return res.json({message: err});
@@ -23,7 +24,7 @@ module.exports = (router, models) => {
       });
     });
 
-  router.route('/inventory/:car')
+  router.route('/users/:user/inventory/:car')
     .get((req, res) => {
       Car.findOne({_id: req.car}, (err, car)=>{
         if(err){

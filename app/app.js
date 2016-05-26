@@ -5,6 +5,7 @@ require('angular-route')
 
 var app = angular.module('app',['ngRoute'])
 
+require('./services/car_service')(app);
 require('./services/auth_service')(app);
 require('./services/error_service')(app);
 require('./controllers/car-controller.js')(app)

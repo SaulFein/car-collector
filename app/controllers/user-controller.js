@@ -1,9 +1,10 @@
 module.exports = function(app) {
-  app.controller('UserController',['AuthService', 'ErrorService', '$http', '$location','$window',
-  function(AuthService, ErrorService, $http, $location, $window){
+  app.controller('UserController',['AuthService', 'CarService', 'ErrorService', '$http', '$location','$window',
+  function(AuthService, CarService, ErrorService, $http, $location, $window){
     let url = 'http://localhost:3000'
     const vm = this;
     vm.user = [];
+    vm.cars = [];
     vm.user = ['user'];
     vm.uae = false; //uae = user already exists
     vm.ip = false; //ip = invalid password
@@ -44,6 +45,16 @@ module.exports = function(app) {
       AuthService.signOut(() => {
         $location.path('/login')
       })
+    }
+
+    vm.getCars = function() {
+      let userId = AuthService.getId();
+      CarService.getCars(userId)
+        .then(function(res) {
+          vm.cars = res.data.data;
+        }, function(err) {
+          console.log(err);
+        });
     }
 
     vm.checkToken = function() {
