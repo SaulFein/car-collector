@@ -7,6 +7,16 @@ module.exports = (router, models) => {
 
   router.route('/users/:user/inventory')
     .get(jwtAuth, (req, res) => {
+      User
+      .findById(req.params.user)
+      .populate('inventory')
+      .exec((err, user) => {
+        if (err) {
+          return res.send(err);
+        }
+        console.log('Hit this!');
+        res.status(200).json({message: 'Returned User', data: user});
+      });
       Car.find((err, cars)=>{
         if(err){
           return res.json({message: err});
@@ -16,11 +26,13 @@ module.exports = (router, models) => {
     })
     .post(jwtAuth, (req, res) => {
       let newCar = new Car(req.body);
+      // newCar.userId = req.params.user;
       newCar.save((err, car)=>{
         if(err){
           return res.json({message: err});
         }
         res.status(200).json({message: 'Created Car', data: car});
+        console.log("hello -------------------")
       });
     });
 

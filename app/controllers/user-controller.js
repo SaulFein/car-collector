@@ -36,7 +36,10 @@ module.exports = function(app) {
           return console.log('Problem Signing In ', err);
         } else {
           vm.error = ErrorService(null);
-          $location.path('/inventory');
+          $http.get(url + '/users/:user/inventory')
+          .then(function(res){
+            $location.path('/inventory');
+          })
         }
       })
     }

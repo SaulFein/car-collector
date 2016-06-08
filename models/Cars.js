@@ -5,6 +5,7 @@ module.exports = (mongoose, models) => {
     userId: {
      type: mongoose.Schema.Types.ObjectId,
      ref: 'User'
+    //  required: true
    },
     make: {
       type: String,

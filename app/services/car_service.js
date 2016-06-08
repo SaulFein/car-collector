@@ -7,10 +7,16 @@ module.exports = function(app) {
     let carService = {};
 
     carService.createCar = function(data) {
-      return $http.post(mainRoute + '/users/' + data.userId + '/inventory', data)
+      return $http.post(mainRoute + '/users/' + data.userId + '/inventory', data, {
+        headers: {
+          token: AuthService.getToken()
+        }
+      })
       .then((res)=>{
         carId = $window.localStorage.carId = res.data.data._id;
         console.log(res);
+        console.log('this is userId ' + data.userId);
+
       });
     };
 
