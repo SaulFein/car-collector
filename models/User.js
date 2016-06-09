@@ -14,7 +14,7 @@ module.exports = (mongoose, models) => {
       type: String,
       required: true
     },
-    inventory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Inventory' }]
+    inventory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Car' }]
   });
 
   UserSchema.pre('save', function(next) {

@@ -2,9 +2,11 @@
 
 module.exports = (router, models) => {
   let User = models.User;
+  let Car = models.Car;
 
   let basicHTTP = require(__dirname + '/../lib/basicHTTP.js');
   let jsonParser = require('body-parser').json();
+  let userId;
 
   router.route('/signup')
     .post(jsonParser, (req, res) => {
@@ -48,20 +50,24 @@ module.exports = (router, models) => {
         if (!valid) {
           return res.status(401).json({message: 'Authentication Failure'});
         }
+        userId = user._id
+        console.log('This is user:  ' + user._id)
         res.status(200).json({message: 'User Logged In', token: user.generateToken(), data: user});
       });
     });
+
     router.route('/users/:user/inventory')
       .get((req, res) => {
         User
-        .findById(req.params.user)
+        .findById(userId)
         .populate('inventory')
         .exec((err, user) => {
           if (err) {
+            console.log("ERRROORRR " + err)
             return res.send(err);
           }
-          res.status(200).json({message: 'Returned User', data: user});
           console.log('Populate?')
+          res.status(200).json({message: 'Returned User', data: user});
         });
       })
   //     .put(jwtAuth, (req, res) => {
