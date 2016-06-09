@@ -36,13 +36,20 @@ module.exports = function(app) {
           return console.log('Problem Signing In ', err);
         } else {
           vm.error = ErrorService(null);
-          $http.get(url + '/users/:user/inventory')
-          .then(function(res){
-            $location.path('/inventory');
-          })
+          $location.path('/inventory');
         }
       })
     }
+
+    vm.getCars = function() {
+  let userId = AuthService.getId();
+  CarService.getCars(userId)
+    .then(function(res) {
+      vm.cars = res.data.data;
+    }, function(err) {
+      console.log(err);
+    });
+}
 
     vm.signOut = function(){
       AuthService.signOut(() => {

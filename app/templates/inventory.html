@@ -1,11 +1,19 @@
-<!-- <section ng-init=userctrl.checkToken()> -->
+<section ng-init="userctrl.getCars(); userctrl.checkToken()">
   <h2 id="car-title">Make: {{carCtrl.curCar.make}}</h2>
   <h2 id="car-model">Model: {{carCtrl.curCar.model}}</h2>
 
+<table>
+  <tr data-ng-repeat="car in userctrl.cars.inventory" class="scores">
+    <td>{{car.make}}</td>
+    <td>{{car.model}}</td>
+    <td>{{car.year}}</td>
+    <!-- <td>{{car.completedQuestions}}</td> -->
+  </tr>
+</table>
   <!-- <div id="answer-cont"> -->
   <div id="next-button" ng-show="carCtrl.showNextButton" ng-click="carCtrl.showNextButton = false; carCtrl.newQuestion()"name="button">next</div>
   <!-- </div> -->
-  <div id="add-button"><a id="submit-link" href="#/submit">add car</a></div>
+  <div id="add-button"><a id="submit-link" href="#/submit" ng-click="carCtrl.getCars()">add car</a></div>
 
   <footer>
     <a id="home-link" href="#/profile">User Profile</a>
