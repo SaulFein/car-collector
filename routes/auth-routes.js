@@ -66,10 +66,11 @@ module.exports = (router, models) => {
             console.log("ERRROORRR " + err)
             return res.send(err);
           }
-          console.log('Populate?')
+          console.log('Populate ' + user)
           res.status(200).json({message: 'Returned User', data: user});
         });
       })
+
   //     .put(jwtAuth, (req, res) => {
   //       User.findByIdAndUpdate(req.params.user, req.body, {new: true}, (err, user) => {
   //         if (err) {
