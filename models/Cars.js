@@ -2,12 +2,12 @@
 
 module.exports = (mongoose, models) => {
   let CarSchema = mongoose.Schema({
-    // _id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    userId: {
-     type: mongoose.Schema.Types.ObjectId,
-     ref: 'User'
-    //  required: true
-   },
+    _id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  //   userId: {
+  //    type: mongoose.Schema.Types.ObjectId,
+  //    ref: 'User'
+  //   //  required: true
+  //  },
     make: {
       type: String,
       required: true

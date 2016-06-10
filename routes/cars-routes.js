@@ -28,11 +28,12 @@ module.exports = (router, models) => {
     .post(jwtAuth, (req, res) => {
       let newCar = new Car(req.body);
       console.log(req.body)
-      newCar.userId = req.params.user;
+      newCar._id = req.params.user;
       newCar.save((err, car)=>{
         if(err){
           return res.json({message: err});
         }
+        console.log("pre push" + req.params.user);
         User.findByIdAndUpdate(req.params.user, {$push: {inventory: car._id}}, {new: true}, (err, user) => {
         });
           console.log("car saved " + car);

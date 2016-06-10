@@ -31,7 +31,7 @@ module.exports = function(app){
 
     //used to populate db
     vm.submit = function(c){
-      c.userId = vm.user;
+      c._id = vm.user;
       console.log('this is ', c);
       console.log('this is userID ' + vm.user);
       // CarService.createCar(c);
