@@ -14,13 +14,10 @@ module.exports = (router, models) => {
         if (err) {
           return res.send(err);
         }
-
         if (user) {
           res.json({message: 'User Already Exists'});
           return console.log("User Exists-----------")
-
         }
-
         if (!user) {
           var newUser = new User(req.body);
           newUser.username = req.body.username;

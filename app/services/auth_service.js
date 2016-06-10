@@ -6,18 +6,16 @@ module.exports = function(app) {
     var auth = {
       createUser(user, cb) {
         cb || function() {};
-        $http.post(url + '/signup', user)
-          .then((res) => {
-            token = $window.localStorage.token = res.data.token;
-            cb(null, res)
-          }, (err) => {
-            cb(err)
-          })
+        // $http.post(url + '/signup', user)
+        //   .then((res) => {
+        //     token = $window.localStorage.token = res.data.token;
+        //     cb(null, res)
+        //   }, (err) => {
+        //     cb(err)
+        //   })
       },
       getToken() {
         console.log('Get Token = ' + token);
-        console.log('Get Token2 = ' + $window.localStorage.token);
-
         return token || $window.localStorage.token;
       },
       getId(){
