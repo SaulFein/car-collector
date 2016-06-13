@@ -64,15 +64,15 @@ module.exports = function(app) {
       })
     }
 
-    vm.getCars = function() {
-      let userId = AuthService.getId();
-      CarService.getCars(userId)
-        .then(function(res) {
-          vm.cars = res.data.data;
-        }, function(err) {
-          console.log(err);
-        });
-    }
+    // vm.getCars = function() {
+    //   let userId = AuthService.getId();
+    //   CarService.getCars(userId)
+    //     .then(function(res) {
+    //       vm.cars = res.data.data;
+    //     }, function(err) {
+    //       console.log(err);
+    //     });
+    // }
 
     vm.checkToken = function() {
       if (!$window.localStorage.token){

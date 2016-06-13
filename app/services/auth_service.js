@@ -16,7 +16,7 @@ module.exports = function(app) {
         //   })
       },
       getToken() {
-        console.log('Get Token = ' + token);
+        console.log('Get Token = ' + $window.localStorage.token);
         return token || $window.localStorage.token;
       },
       getId(){
@@ -24,8 +24,9 @@ module.exports = function(app) {
       },
       signOut(cb) {
         token = null;
+        // userId = null;
         $window.localStorage.token = null;
-        $window.localStorage.scoreId = $window.localStorage.user = null;
+        $window.localStorage.user = null;
         if (cb) cb();
       },
       signIn(user, cb) {
@@ -40,6 +41,7 @@ module.exports = function(app) {
         }).then((res) => {
           console.log(res)
           token = $window.localStorage.token = res.data.token;
+          // userId = res.data.data._id;
           userId = $window.localStorage.user = res.data.data._id;
           console.log('This is token ', token)
           console.log('this is userId aut', userId)

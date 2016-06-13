@@ -24,14 +24,13 @@ module.exports = function(app){
     // gets questions based on category/difficulty selected or from previous quiz
     vm.getCars = function(data){
       CarService.getCars(vm.user);
-
     }
 
 
 
     //used to populate db
     vm.submit = function(c){
-      c._userId = vm.user;
+      // c._userId = vm.user;
       console.log('this is ', c);
       console.log('this is userID ' + vm.user);
       // CarService.createCar(c);
@@ -41,7 +40,7 @@ module.exports = function(app){
         }
       })
       .then((res) => {
-        carId = $window.localStorage.carId = res.data.data._userId;
+        carId = $window.localStorage.carId = res.data.data._id;
         console.log(res);
         console.log('this is userId submint' + vm.user);
         console.log('this is token submint' + $window.localStorage.token);
