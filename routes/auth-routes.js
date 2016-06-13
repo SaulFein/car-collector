@@ -30,7 +30,7 @@ module.exports = (router, models) => {
             console.log("save user " + user)
             res.status(200).json({message: 'User Created', token: user.generateToken(), data: user});
 
-            console.log("hello " + user.token);
+            console.log("hello");
           });
         }
       });

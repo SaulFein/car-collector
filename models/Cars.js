@@ -2,7 +2,7 @@
 
 module.exports = (mongoose, models) => {
   let CarSchema = mongoose.Schema({
-    // _id: { type: mongoose.Schema.Types.ObjectId},
+    // _id: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     _userId: {
      type: mongoose.Schema.Types.ObjectId,
      ref: 'User'

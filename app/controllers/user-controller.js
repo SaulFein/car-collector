@@ -10,9 +10,6 @@ module.exports = function(app) {
     vm.ip = false; //ip = invalid password
 
     vm.createUser = function(user) {
-      // token = null;
-      // userId = null;
-      // $window.localhost = null;
       console.log("attempting to sign in ", user)
       $http.post(url + '/signup', user, {
         headers: {
@@ -30,7 +27,7 @@ module.exports = function(app) {
           console.log("resdata Token " + res.data.token)
           token = $window.localStorage.token = res.data.token;
           // console.log("VM Creat USER TOKEN " + token)
-          $location.path('/inventory');
+          $location.path('/login');
         } else {
           vm.uae = true;
           token = $window.localStorage.token = res.data.token;

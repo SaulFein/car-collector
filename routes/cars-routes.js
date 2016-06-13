@@ -12,7 +12,7 @@ module.exports = (router, models) => {
       .populate('inventory')
       .exec((err, user) => {
         if (err) {
-          console.log("eerrooorsss")
+          console.log("eerrooorsss " + err)
           return res.send(err);
         }
         console.log('Hit this!');
@@ -27,7 +27,7 @@ module.exports = (router, models) => {
     })
     .post(jwtAuth, (req, res) => {
       let newCar = new Car(req.body);
-      newCar._id;
+      newCar._id = req.params.user;
 
       // console.log("New Car ID " + newCar._id)
 

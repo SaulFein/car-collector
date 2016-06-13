@@ -6,14 +6,14 @@ module.exports = function(app) {
     var auth = {
       createUser(user, cb) {
         cb || function() {};
-        $http.post(url + '/signup', user)
-          .then((res) => {
-            token = $window.localStorage.token = res.data.token;
-            console.log("creat user token " + token)
-            cb(null, res)
-          }, (err) => {
-            cb(err)
-          })
+        // $http.post(url + '/signup', user)
+        //   .then((res) => {
+        //     token = $window.localStorage.token = res.data.token;
+        //     console.log("creat user token " + token)
+        //     cb(null, res)
+        //   }, (err) => {
+        //     cb(err)
+        //   })
       },
       getToken() {
         console.log('Get Token = ' + token);
@@ -25,7 +25,7 @@ module.exports = function(app) {
       signOut(cb) {
         token = null;
         $window.localStorage.token = null;
-        // $window.localStorage.scoreId = $window.localStorage.user = null;
+        $window.localStorage.scoreId = $window.localStorage.user = null;
         if (cb) cb();
       },
       signIn(user, cb) {
