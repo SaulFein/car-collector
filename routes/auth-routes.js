@@ -24,10 +24,13 @@ module.exports = (router, models) => {
           newUser.password = req.body.password;
           newUser.save((err, user) => {
             if (err) {
+              console.log("saving user error " + err)
               return res.json({message: 'Error Saving New User', error: err});
             }
+            console.log("save user " + user)
             res.status(200).json({message: 'User Created', token: user.generateToken(), data: user});
-            console.log("hello");
+
+            console.log("hello " + user.token);
           });
         }
       });

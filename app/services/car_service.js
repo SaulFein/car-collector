@@ -46,7 +46,7 @@ module.exports = function(app) {
 
     carService.updateCar = function(data, carId) {
       console.log(carId)
-      return $http.put(mainRoute + '/users/' + data._id + '/inventory/' + carId, data, {
+      return $http.put(mainRoute + '/users/' + data._userId + '/inventory/' + carId, data, {
         headers: {
           token: AuthService.getToken()
         }
@@ -54,7 +54,7 @@ module.exports = function(app) {
     };
 
     carService.deleteCar = function(data) {
-      return $http.delete(mainRoute + '/users/' + data._id + '/inventory/' + data.carId, {
+      return $http.delete(mainRoute + '/users/' + data._userId + '/inventory/' + data.carId, {
         headers: {
           token: AuthService.getToken()
         }

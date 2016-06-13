@@ -31,7 +31,7 @@ module.exports = function(app){
 
     //used to populate db
     vm.submit = function(c){
-      c._id = vm.user;
+      c._userId = vm.user;
       console.log('this is ', c);
       console.log('this is userID ' + vm.user);
       // CarService.createCar(c);
@@ -41,9 +41,11 @@ module.exports = function(app){
         }
       })
       .then((res) => {
-        carId = $window.localStorage.carId = res.data.data._id;
+        carId = $window.localStorage.carId = res.data.data._userId;
         console.log(res);
-        console.log('this is userId ' + vm.user);
+        console.log('this is userId submint' + vm.user);
+        console.log('this is token submint' + $window.localStorage.token);
+
 
         // console.log(res)
         // console.log('this is userID ' + vm.user);

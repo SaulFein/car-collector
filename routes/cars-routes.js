@@ -27,14 +27,27 @@ module.exports = (router, models) => {
     })
     .post(jwtAuth, (req, res) => {
       let newCar = new Car(req.body);
-      console.log(req.body)
-      newCar._id = req.params.user;
+      newCar._id;
+
+      // console.log("New Car ID " + newCar._id)
+
+      console.log("this is req.body ", req.body)
+      console.log("REQ.PARAMS " + req.params.user)
+      // newCar._userId = req.params.user;
       newCar.save((err, car)=>{
         if(err){
+          console.log("Saving error " + err);
           return res.json({message: err});
         }
+
         console.log("pre push" + req.params.user);
-        User.findByIdAndUpdate(req.params.user, {$push: {inventory: car._id}}, {new: true}, (err, user) => {
+        console.log("car ID " + car._id);
+
+        User.findByIdAndUpdate({_id: req.params.user}, {$push: {inventory: car._id}}, {new: true}, (err, user) => {
+          if(err){
+            console.log("find and update error " + err)
+            // return res.json({message: err});
+          }
         });
           console.log("car saved " + car);
           res.status(200).json({message: 'Created Car', data: car});

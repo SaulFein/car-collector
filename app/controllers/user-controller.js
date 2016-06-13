@@ -10,7 +10,10 @@ module.exports = function(app) {
     vm.ip = false; //ip = invalid password
 
     vm.createUser = function(user) {
-      console.log("attempting to sign in " + user)
+      // token = null;
+      // userId = null;
+      // $window.localhost = null;
+      console.log("attempting to sign in ", user)
       $http.post(url + '/signup', user, {
         headers: {
           token: AuthService.getToken()
@@ -19,15 +22,18 @@ module.exports = function(app) {
       .then(function(res){
         if(res.data.message !== "User Already Exists"){
           console.log('Shitttttt ' + res.data.message);
-          console.log(res);
+          console.log("Then CU res.data ", res.data);
           vm.user.push(res.data);
           vm.newUser = null;
+          console.log("local Token " + $window.localStorage.token)
+
+          console.log("resdata Token " + res.data.token)
           token = $window.localStorage.token = res.data.token;
+          // console.log("VM Creat USER TOKEN " + token)
           $location.path('/inventory');
         } else {
-          console.log("front end creat user");
           vm.uae = true;
-
+          token = $window.localStorage.token = res.data.token;
         }
       });
     };
