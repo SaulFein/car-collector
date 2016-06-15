@@ -17,18 +17,22 @@ module.exports = (mongoose, models) => {
       required: true
     },
     year: {
-      type: String
+      type: String,
+      default: 'N/A'
     },
     licence: {
-      type: String
+      type: String,
+      default: 'N/A'
     },
-    yearaquired: {
-      type: String
+    vin: {
+      type: String,
+      default: 'N/A'
     },
-    yearsold: {
-      type: String
+    description: {
+      type: String,
+      default: 'N/A'
     },
-    sold: {
+    image: {
       type: String
     }
   });
