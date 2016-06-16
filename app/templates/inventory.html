@@ -1,6 +1,6 @@
 <section ng-init="userctrl.getCars(); userctrl.checkToken()">
-  <h2 id="car-title">Make: {{carCtrl.curCar.make}}</h2>
-  <h2 id="car-model">Model: {{carCtrl.curCar.model}}</h2>
+  <h2 id="car-title">Make: {{userctrl.curCar.make}}</h2>
+  <h2 id="car-model">Model: {{userctrl.curCar.model}}</h2>
 
 <table>
   <tr data-ng-repeat="car in userctrl.cars.inventory" class="scores">

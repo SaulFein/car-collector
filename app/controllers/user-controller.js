@@ -5,6 +5,7 @@ module.exports = function(app) {
     const vm = this;
     vm.user = [];
     vm.cars = [];
+    vm.curCar = 0
     vm.user = ['user'];
     vm.uae = false; //uae = user already exists
     vm.ip = false; //ip = invalid password
@@ -49,10 +50,13 @@ module.exports = function(app) {
     }
 
     vm.getCars = function() {
+  console.log("hit this getCars from User Controller! ======== ");
   let userId = AuthService.getId();
   CarService.getCars(userId)
     .then(function(res) {
       vm.cars = res.data.data;
+      vm.curCar = vm.cars[vm.curCar];
+      console.log("This is cur Car " + vm.curCar);
     }, function(err) {
       console.log(err);
     });

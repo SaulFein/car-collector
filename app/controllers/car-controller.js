@@ -8,26 +8,18 @@ module.exports = function(app){
     let vm = this;
     vm.allCars = [];
     vm.user = $window.localStorage.user
-
-
     vm.showNextButton;
+    vm.curCar = 0;
 
-    // vm.category = '';
-
-    //sets category/resets carData object to allow for new score to be saved
-    // vm.getCategory = function(cat){
-    //   vm.reset();
-    //   vm.carData.category = vm.category = cat;
-    //   $location.path('/difficulty')
-    // }
-
-    // gets questions based on category/difficulty selected or from previous quiz
     vm.getCars = function(data){
+      console.log("THISMOTHER FUCKER!-----------------")
       cUser = $window.localStorage.user
-      CarService.getCars(cUser);
+      console.log('This is current Car ' + vm.curCar);
+
+      vm.allCars = CarService.getCars(cUser);
+      vm.curCar = vm.allCars[vm.curCar];
+      console.log('This is current Car ' + vm.curCar);
     }
-
-
 
     //used to populate db
     vm.submit = function(c){
@@ -45,11 +37,6 @@ module.exports = function(app){
         console.log(res);
         console.log('this is userId submint' + cUser);
         console.log('this is token submint' + $window.localStorage.token);
-
-
-        // console.log(res)
-        // console.log('this is userID ' + vm.user);
-
       })
     }
 
@@ -65,6 +52,5 @@ module.exports = function(app){
         }
       })
     }
-
   }])
 }
